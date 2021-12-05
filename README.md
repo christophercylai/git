@@ -1,6 +1,13 @@
 # Git Commands - Some Common Operations
 > On Windows, using Git Bash is highly recommended
 
+## Git Help
+* The man page of Git
+* Example: if you want to know what what does `git stash` do
+```
+git help stash
+```
+
 ## Understanding Git Branches
 > Here we assume that the remote repository remains static
 * Cloning a remote repository to the local machine
@@ -8,7 +15,7 @@
 $ git clone https://github.com/christophercylai/git.git
 ```
 * The latest commit to the main branch is the HEAD of the main branch
-* The main branch is also called the HEAD-branch, which is a different concept than HEAD of a branch
+* The main branch is also called the HEAD-branch (i.e. `origin/HEAD`), which is a different concept than HEAD of a branch
 * `origin` represents the remote repository
 ```
 $ git branch
@@ -59,4 +66,3 @@ Date:   Sat Dec 4 20:05:30 2021 -0500
 commit ba7573edbd1532dd8925eefc490a720fd7ea5329 (origin/main, origin/HEAD, main)
 ...
 ```
-* Make new_branch known to remote

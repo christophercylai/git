@@ -4,7 +4,7 @@
 ## Understanding Git Branches
 * Cloning a remote repository to the local machine
 ```
-git clone 
+git clone https://github.com/christophercylai/git.git
 ```
 * The latest commit to the main branch is the HEAD of the main branch
 ```

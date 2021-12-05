@@ -16,7 +16,7 @@ $ git clone https://github.com/christophercylai/git.git
 ```
 * The latest commit to the main branch is the HEAD of the main branch
 * The main branch is also called the HEAD-branch (i.e. `origin/HEAD`), which is a different concept than HEAD of a branch
-* `origin` represents the remote repository
+* `origin` represents the default remote repository (there could be multiple remote repositories)
 ```
 $ git branch
 * main
@@ -66,3 +66,41 @@ Date:   Sat Dec 4 20:05:30 2021 -0500
 commit ba7573edbd1532dd8925eefc490a720fd7ea5329 (origin/main, origin/HEAD, main)
 ...
 ```
+* Make `new_branch` known to the default remote repository
+* At this point, our local repository is the same as the remote
+```
+$ git push -u origin new_branch
+```
+
+## Bringing Changes from the Remote Repository to Local
+* Continue with the example above, let's suppose that someone has merged a few commits to the main branch in the remote repository
+* We would like to synchronize our local main branch with the remote
+```
+$ git checkout main
+$ git pull origin  # origin can be omitted if there is only one remote repository
+```
+* We also want to bring in the changes from `main` to `new_branch`
+```
+$ git checkout new_branch
+$ git merge main
+```
+
+## Git Pull and Merge - Conflict Resolution
+* If you encounter a pull or merge conflict, you have a couple options
+  1. resolve the conflicts manually - if there are a small number of conflicts, this is a good option because it is safe
+  ```
+  # after the conflict has been resolved, use this command to finanlize the resolution
+  $ git merge --continue
+  ```
+  2. resolve the conflicts using pull/merge `strategy` - see the `MERGE STRATEGIES` of `git help merge` for details
+  ```
+  # if there is a merge conflict, abort the merge first
+  $ git merge --abort
+  
+  # attempt the merge again using merge strategy
+  # for example, we prefer the changes from the main branch
+  $ git merge -X theirs main
+  
+  # if we prefer the changes from new_branch
+  $ git merge -X ours main
+  ```

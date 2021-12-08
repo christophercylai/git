@@ -12,10 +12,6 @@ git log -5
 ```
 git log origin/HEAD..HEAD
 ```
-* Show the commits between two commits
-```
-git log origin/HEAD..HEAD
-```
 * Filter the log with a string search
 ```
 # --grep can be use multiple times, commits that match any one of the patterns will show
